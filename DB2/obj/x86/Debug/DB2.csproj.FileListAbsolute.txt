@@ -1,0 +1,14 @@
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\obj\x86\Debug\DB2.Form1.resources
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\obj\x86\Debug\DB2.Properties.Resources.resources
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\obj\x86\Debug\DB2.csproj.GenerateResource.Cache
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\bin\Debug\DB2.exe
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\bin\Debug\DB2.pdb
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\obj\x86\Debug\DB2.exe
+C:\Users\toktar\AppData\Local\Temporary Projects\DB2\obj\x86\Debug\DB2.pdb
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\obj\x86\Debug\DB2.exe
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\obj\x86\Debug\DB2.pdb
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\bin\Debug\DB2.exe
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\bin\Debug\DB2.pdb
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\obj\x86\Debug\DB2.Form1.resources
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\obj\x86\Debug\DB2.Properties.Resources.resources
+C:\Users\toktar\documents\visual studio 2010\Projects\DB2\DB2\obj\x86\Debug\DB2.csproj.GenerateResource.Cache
