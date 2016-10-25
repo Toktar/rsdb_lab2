@@ -154,5 +154,86 @@ namespace DB2
                 }
             }
         }
+
+        private void backup(string file)
+        {
+           
+            
+            using (conn)
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ExportToFile(file);
+                        conn.Close();
+                    }
+                }
+            }
+            MessageBox.Show("OK! The process is ended");
+        }
+
+        private void restore(string file)
+        {
+
+           
+            using (conn)
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportFromFile(file);
+                        conn.Close();
+                    }
+                }
+            }
+           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string file = "";
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.FileName = "backup.sql";
+            saveFileDialog1.ShowDialog();
+            file = saveFileDialog1.FileName;
+            if (file == "")
+            {
+                MessageBox.Show("Error: Search other folder");
+                return;
+            }
+            backup(file);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string file = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "Текстовые файлы(*.sql)|*.sql" };
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                file = openFileDialog1.FileName;
+
+            if (file == "")
+            {
+                MessageBox.Show("Error: Search other file");
+                return;
+            }
+
+            restore(file);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+        }
+          
     }
+
+
 }
