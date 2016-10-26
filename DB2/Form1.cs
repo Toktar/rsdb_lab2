@@ -227,5 +227,10 @@ namespace DB2
 
             restore(file);
         }
+
+        private void RollbackButton_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
     }
 }

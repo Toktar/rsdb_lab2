@@ -36,6 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.RollbackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(542, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(384, 62);
+            this.richTextBox1.Size = new System.Drawing.Size(384, 74);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -51,9 +52,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(542, 114);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.Size = new System.Drawing.Size(87, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "GO!";
+            this.button1.Text = "commit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -76,7 +77,7 @@
             // transactionCheck
             // 
             this.transactionCheck.AutoSize = true;
-            this.transactionCheck.Location = new System.Drawing.Point(659, 119);
+            this.transactionCheck.Location = new System.Drawing.Point(844, 92);
             this.transactionCheck.Name = "transactionCheck";
             this.transactionCheck.Size = new System.Drawing.Size(82, 17);
             this.transactionCheck.TabIndex = 5;
@@ -85,7 +86,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(747, 115);
+            this.button2.Location = new System.Drawing.Point(770, 115);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -95,7 +96,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(828, 115);
+            this.button3.Location = new System.Drawing.Point(851, 115);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 7;
@@ -103,11 +104,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // RollbackButton
+            // 
+            this.RollbackButton.Location = new System.Drawing.Point(635, 114);
+            this.RollbackButton.Name = "RollbackButton";
+            this.RollbackButton.Size = new System.Drawing.Size(86, 23);
+            this.RollbackButton.TabIndex = 8;
+            this.RollbackButton.Text = "rollback";
+            this.RollbackButton.UseVisualStyleBackColor = true;
+            this.RollbackButton.Click += new System.EventHandler(this.RollbackButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 362);
+            this.Controls.Add(this.RollbackButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.transactionCheck);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button RollbackButton;
     }
 }
 
