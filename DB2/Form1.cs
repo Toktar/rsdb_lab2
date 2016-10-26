@@ -227,13 +227,5 @@ namespace DB2
 
             restore(file);
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            folderBrowserDialog1.ShowDialog();
-        }
-          
     }
-
-
 }
