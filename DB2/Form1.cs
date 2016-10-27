@@ -42,6 +42,8 @@ namespace DB2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox1.Text = "";
+
             conn.Open();
 
             string sql = "SELECT * FROM actor"; // Строка запроса
@@ -54,8 +56,6 @@ namespace DB2
             {
                 doQuery(sql);
             }
-
-
 
             conn.Close();
         }
@@ -228,12 +228,9 @@ namespace DB2
             restore(file);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void RollbackButton_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
+            textBox1.Text = "";
         }
-          
     }
-
-
 }
