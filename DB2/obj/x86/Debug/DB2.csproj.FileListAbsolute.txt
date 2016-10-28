@@ -26,3 +26,5 @@ D:\Programs\VSGitTest\rsdb_lab2-master\DB2\bin\Debug\MySql.Data.dll
 D:\Programs\VSGitTest\rsdb_lab2-master\DB2\bin\Debug\MySqlBackup.dll
 D:\Programs\VSGitTest\rsdb_lab2-master\DB2\obj\x86\Debug\DB2.exe
 D:\Programs\VSGitTest\rsdb_lab2-master\DB2\obj\x86\Debug\DB2.pdb
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.exe
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.pdb
