@@ -19,8 +19,16 @@ namespace DB2
 
         private void go_Click(object sender, EventArgs e)
         {
-            setConnectionString();
-            this.Close();
+            if (serverName.Text.Equals("") || userName.Text.Equals("") || dbName.Text.Equals("") || port.Text.Equals("") || password.Text.Equals(""))
+            {
+                MessageBox.Show("Input data, please");
+            }
+            else
+            {
+                setConnectionString();
+                this.Close();
+            }
+            
         }
 
         private void setConnectionString() {
