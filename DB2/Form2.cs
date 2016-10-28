@@ -52,6 +52,11 @@ namespace DB2
              password.Text = "root"; // Пароль для подключения          
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
       
 
         

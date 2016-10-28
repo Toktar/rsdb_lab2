@@ -162,6 +162,7 @@
             this.Controls.Add(this.serverName);
             this.Name = "Form2";
             this.Text = "Start new DB connection";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

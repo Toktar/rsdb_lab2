@@ -28,3 +28,12 @@ D:\Programs\VSGitTest\rsdb_lab2-master\DB2\obj\x86\Debug\DB2.exe
 D:\Programs\VSGitTest\rsdb_lab2-master\DB2\obj\x86\Debug\DB2.pdb
 C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.exe
 C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.pdb
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.csprojResolveAssemblyReference.cache
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.Form1.resources
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.Form2.resources
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.Properties.Resources.resources
+C:\Users\toktar\Documents\rsdb_lab2\DB2\obj\x86\Debug\DB2.csproj.GenerateResource.Cache
+C:\Users\toktar\Documents\rsdb_lab2\DB2\bin\Debug\DB2.exe
+C:\Users\toktar\Documents\rsdb_lab2\DB2\bin\Debug\DB2.pdb
+C:\Users\toktar\Documents\rsdb_lab2\DB2\bin\Debug\MySql.Data.dll
+C:\Users\toktar\Documents\rsdb_lab2\DB2\bin\Debug\MySql.Data.xml

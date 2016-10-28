@@ -66,6 +66,11 @@ namespace DB2
 
         public bool doTransactionQuery(String query)
         {
+            if (conn.Database == "")
+            {
+                lastExeption = "Connection Error";
+                return false;
+            }
             bool corectEnd = true;
             MySqlTransaction tr = null;
 
@@ -125,6 +130,13 @@ namespace DB2
 
         public bool backup()
         {
+            if (conn.Database == "")
+            {
+                lastExeption = "Connection Error";
+                return false;
+            }
+
+           
             string file = "";
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.RestoreDirectory = true;
@@ -146,6 +158,13 @@ namespace DB2
 
         public bool restore()
         {
+            if (conn.Database == "")
+            {
+                lastExeption = "Connection Error";
+                return false;
+            }
+
+            if (conn.Database == "") return false; 
             string file = "";
             OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "Текстовые файлы(*.sql)|*.sql" };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
