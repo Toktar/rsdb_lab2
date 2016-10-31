@@ -11,7 +11,7 @@ namespace DB2
 {
     public partial class Form2 : Form
     {
-        private String connectionString = "";
+        private String connectionString = "server=localhost;user=root;database=sakila;port=3306;password=root;";
         public Form2()
         {
             InitializeComponent();

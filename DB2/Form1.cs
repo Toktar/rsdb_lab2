@@ -27,9 +27,19 @@ namespace DB2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox1.Text = "";
             string sql = textBox1.Text;
-            bool correctEnd = transactionCheck.Checked ? connectionService.doTransactionQuery(sql) : correctEnd = connectionService.doQuery(sql);
-            richTextBox1.Text = correctEnd?"OK! The process is ended":connectionService.lastExeption;  
+
+            if(transactionCheck.Checked) {
+               // connectionService.doQuery("START TRANSACTION;");
+                richTextBox1.Text = connectionService.doTransactionQuery(sql) ? "OK! The transaction is ended" : connectionService.lastExeption;
+                //richTextBox1.Text = connectionService.doQuery(sql) ? "OK! The transaction is ended" : connectionService.lastExeption;  
+      
+            } else {
+                
+                richTextBox1.Text = connectionService.doQuery(sql)? "OK! The query is done" : connectionService.lastExeption;  
+      
+            }
         }
 
       
@@ -43,32 +53,46 @@ namespace DB2
             {
                 MessageBox.Show("Error of Grid");
             }
-        }
+        }               
         
      
 
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
-            connectionService.backup();
+            if (false == connectionService.backup()) MessageBox.Show(connectionService.lastExeption);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
            
 
-            connectionService.restore();
+           if(false == connectionService.restore()) MessageBox.Show(connectionService.lastExeption);
         }
 
         private void RollbackButton_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+           // textBox1.Text = "";
+            connectionService.conn.Open();
+            connectionService.lastTr.Rollback();
+
+            connectionService.conn.Close();
+          //  connectionService.doQuery("ROLLBACK;");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             connectionService = new ConnectionService(ref dataGridView1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           // connectionService.doQuery("COMMIT;");
+            connectionService.conn.Open();
+            connectionService.lastTr.Commit();
+            connectionService.conn.Close();
+
         }
     }
 }

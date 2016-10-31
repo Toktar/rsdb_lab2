@@ -4,15 +4,17 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Text;
 
 namespace DB2
 {
     public class ConnectionService
     {
 
-       private MySqlConnection conn;
+       public MySqlConnection conn;
        private DataGridView dataGridOut;
        private BackupService backupService;
+       public MySqlTransaction lastTr = null;
          public string lastExeption = "";
 
        
@@ -21,7 +23,10 @@ namespace DB2
         {
            Form2 connectForm = new Form2();
            connectForm.Show();
-           init(connectForm.getConnectionString(), ref dataGrid);
+           while (connectForm.getConnectionString() == "")
+           {}
+               init(connectForm.getConnectionString(), ref dataGrid);
+           
 
         }
         private void init(string connStr, ref DataGridView dataGrid)
@@ -31,32 +36,39 @@ namespace DB2
             backupService = new BackupService(conn);
             dataGridOut = dataGrid;
         }
+        
 
         public bool doQuery(String query)
         {
-            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, conn);
-            DataSet DS = new DataSet();
-            try
+
+            String[] queryList = query.Split(';');
+            for (int i = 1; i < queryList.Length; i++)
             {
-                mySqlDataAdapter.Fill(DS);
+                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(query, conn);
+                DataSet DS = new DataSet();
                 try
                 {
-                    dataGridOut.DataSource = DS.Tables[0];
+                    mySqlDataAdapter.Fill(DS);
+                    try
+                    {
+                        if(DS.Tables.Count>0) dataGridOut.DataSource = DS.Tables[0];
+                    }
+                    catch (DataException dataExp)
+                    {
+                        lastExeption = dataExp.Message;
+                        return false;
+                    }
+                    dataGridOut.AutoResizeColumns(
+            DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+
+
                 }
-                catch (DataException dataExp)
+                catch (MySqlException exp)
                 {
-                    lastExeption = dataExp.Message;
+                    lastExeption = exp.Message;
                     return false;
                 }
-                dataGridOut.AutoResizeColumns(
-        DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
 
-
-            }
-            catch (MySqlException exp)
-            {
-                lastExeption = exp.Message;
-                return false;
             }
             return true;
 
@@ -74,10 +86,11 @@ namespace DB2
             bool corectEnd = true;
             MySqlTransaction tr = null;
 
-            String[] queryList = query.Split('\n');
+            String[] queryList = query.Split(';');
 
             try
             {
+                conn.Open();
 
                 tr = conn.BeginTransaction();
 
@@ -87,11 +100,30 @@ namespace DB2
                 foreach (String curQuery in queryList)
                 {
                     cmd.CommandText = curQuery;
-                    cmd.ExecuteNonQuery();
+                   if(curQuery!="") cmd.ExecuteNonQuery();
+
+
+                   if (curQuery.Contains("SELECT") || curQuery.Contains("select"))
+                   {
+                       MySqlDataReader thisReader = cmd.ExecuteReader();
+                       DataSet DS = new DataSet();
+                       while (thisReader.Read())
+                       {
+
+                           DataTable dt = null;
+
+                           dt = new DataTable();
+
+                           dt.Load(thisReader);
+
+                           dataGridOut.DataSource = dt;
+                       }
+                   }
                 }
 
+               
 
-                tr.Commit();
+              //  tr.Commit();
                 
 
             }
@@ -99,7 +131,7 @@ namespace DB2
             {
                 try
                 {
-                    tr.Rollback();
+                  //  tr.Rollback();
 
                 }
                 catch (MySqlException ex1)
@@ -114,15 +146,15 @@ namespace DB2
             }
             finally
             {
-
-                if (queryList.Length == 1)
-                {
-                    doQuery(queryList[0]);
-                }
+                
+               
                 if (conn != null)
                 {
                     conn.Close();
                 }
+
+                lastTr = tr;
+                
                 
             }
             return corectEnd;
